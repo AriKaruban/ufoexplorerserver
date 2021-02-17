@@ -41,7 +41,7 @@ app.get('/:year',(req,res)=>{
     var year = req.params.year;
     if(year>=1980&&year<=1999){
         console.log("year in data")
-        let tempjson = getdataofyear(year)
+        let tempjson = await getdataofyear(year)
         res.send(tempjson)
     }else{res.send("year not in data")}
 })
