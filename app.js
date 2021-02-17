@@ -3,6 +3,7 @@ const app=express();
 const fs = require('fs');
 const url = require('url');
 const querystring = require('querystring');
+const e = require('express');
 let rawdata = fs.readFileSync('1980-1999.json');
 let parsedata = JSON.parse(rawdata);
 let rawdata2 = fs.readFileSync('2010-2021.json');
@@ -26,11 +27,11 @@ app.get('/:year',(req,res)=>{
     let tempjson = []
     if(year>1980&&year<1999){
         parsedata.forEach(element => {
-            if(element.occuredDate.substr(element.occuredDate.length - 5)==year){
+            if(element.occuredDate.substr(element.occuredDate.length - 4)==year){
                 tempjson.push(element)
             }
         });
-    }
+    }else{res.send("year not in data")}
     res.send(tempjson)
 })
 const port=process.env.PORT||3000;
