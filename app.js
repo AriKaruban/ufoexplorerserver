@@ -31,8 +31,8 @@ app.get('/:year',(req,res)=>{
                 tempjson.push(element)
             }
         });
+        res.send(tempjson)
     }else{res.send("year not in data")}
-    res.send(tempjson)
 })
 const port=process.env.PORT||3000;
 console.log(port);
