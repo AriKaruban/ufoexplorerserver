@@ -26,12 +26,12 @@ app.get('/1980_1999/:id/:field',(req,res)=>{
 async function getdataofyear(year,res){
     let p=new Promise((resolve,rejected)=>{
         var tempjson = []
-        for(let x =0;x<parsedata.length;x++){
-            if(parsedata[x].occuredDate.substr(parsedata[x].occuredDate.length - 4)==year){
-                tempjson.push(parsedata[x])
+        for(const entry of parsedata){
+            if(entry.occuredDate.substr(entry.occuredDate.length - 4)==year){
+                tempjson.push(entry)
             }
+            resolve(tempjson)
         }
-        resolve(tempjson)
     })
     let data = await p
     res.send(data)
