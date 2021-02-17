@@ -34,7 +34,7 @@ async function getdataofyear(year,res){
         }
     })
     let data = await p
-    res.send(data)
+    res.send(await data)
 }
 app.get('/:year',(req,res)=>{
     var year = req.params.year;
