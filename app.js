@@ -12,8 +12,8 @@ app.use(express.static("public"));
 app.get('/',(req,res)=>{
     res.send(parsedata)
 })
-app.get('/1980_1999',(req,res)=>{
-    res.send(parsedata[1])
+app.get('/1980_1999/:id',(req,res)=>{
+    res.send(parsedata[id])
 })
 app.get('/2010_2021',(req,res)=>{
     res.send(parsedata2)
