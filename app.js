@@ -11,7 +11,7 @@ let parsedata2 = JSON.parse(rawdata2[0]);
 app.use(express.static("public"));
 
 app.get('/',(req,res)=>{
-    res.send(req.params.query)
+    res.send(parsedata)
 })
 app.get('/1980_1999/:id',(req,res)=>{
     var id = req.params.id;
@@ -26,12 +26,12 @@ app.get('/:year',(req,res)=>{
     var year = req.params.year;
     var tempjson = []
     if(year>=1980&&year<=1999){
-        // for(let x=0;x<parsedata.length;x++){
-        //     if(parsedata[x].occuredDate.substr(parsedata[x].occuredDate.length - 4)==year){
-        //         tempjson.push(element)
-        //     }
-        // }
-        res.send(`${year} is found in data`)
+        for(const entry of parsedata){
+            if(entry.occuredDate.substr(entry.occuredDate.length - 4)==year){
+                tempjson.push(element)
+            }
+        }
+        res.send(tempjson)
     }else{res.send("year not in data")}
 })
 const port=process.env.PORT||3000;
