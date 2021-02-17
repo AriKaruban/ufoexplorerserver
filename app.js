@@ -25,12 +25,12 @@ app.get('/1980_1999/:id/:field',(req,res)=>{
 app.get('/:year',(req,res)=>{
     var year = req.params.year;
     let tempjson = []
-    if(year>1980&&year<1999){
-        parsedata.forEach(element => {
-            if(element.occuredDate.substr(element.occuredDate.length - 4)==year){
+    if(year>=1980&&year<=1999){
+        for(let x=0;x<parsedata.length;x++){
+            if(parsedata[x].occuredDate.substr(parsedata[x].occuredDate.length - 4)==year){
                 tempjson.push(element)
             }
-        });
+        }
         res.send(tempjson)
     }else{res.send("year not in data")}
 })
