@@ -20,6 +20,7 @@ app.get('/2010_2021/:id',(req,res)=>{
 })
 const port=process.env.PORT||3000;
 console.log(port);
+console.log(rawdata[0])
 app.listen(port,()=>{
     console.log('Listening on localhost');
 })
