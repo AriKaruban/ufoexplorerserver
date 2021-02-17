@@ -12,15 +12,14 @@ app.use(express.static("public"));
 app.get('/',(req,res)=>{
     res.send(url.parse(req.url,true).query)
 })
-app.get('/1980_1999/:id',(req,res)=>{
-    res.send(JSON.parse(rawdata[id]))
+app.get('/1980_1999',(req,res)=>{
+    res.send(JSON.parse(parsedata[0]))
 })
-app.get('/2010_2021/:id',(req,res)=>{
-    res.send(JSON.parse(rawdata2[id]))
+app.get('/2010_2021',(req,res)=>{
+    res.send(JSON.parse(parsedata2[0]))
 })
 const port=process.env.PORT||3000;
 console.log(port);
-console.log(rawdata[0])
 app.listen(port,()=>{
     console.log('Listening on localhost');
 })
