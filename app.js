@@ -8,7 +8,7 @@ const { resolve } = require('path');
 let rawdata = fs.readFileSync('1980-1999.json');
 let parsedata = JSON.parse(rawdata);
 let rawdata2 = fs.readFileSync('2010-2021.json');
-let parsedata2 = JSON.parse(rawdata2[0]);
+let parsedata2 = JSON.parse(rawdata2);
 app.use(express.static("public"));
 
 app.get('/',(req,res)=>{
