@@ -11,7 +11,7 @@ let parsedata2 = JSON.parse(rawdata2[0]);
 app.use(express.static("public"));
 
 app.get('/',(req,res)=>{
-    res.send(req.params)
+    res.send(req.params.query)
 })
 app.get('/1980_1999/:id',(req,res)=>{
     var id = req.params.id;
