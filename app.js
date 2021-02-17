@@ -22,18 +22,21 @@ app.get('/1980_1999/:id/:field',(req,res)=>{
     var field = req.params.field;
     res.send(parsedata[id][field])
 })
-app.get('/:year',(req,res)=>{
-    var year = req.params.year;
+async function getdataofyear(year){
     var tempjson = []
-    if(year>=1980&&year<=1999){
-        console.log("year in data")
-        for(const entry of parsedata){
+    for(const entry of parsedata){
             console.log("forloop")
             if(entry.occuredDate.substr(entry.occuredDate.length - 4)==year){
-                console.log(entry)
-                tempjson.push(element)
+                tempjson.push(entry)
             }
         }
+    return tempjson
+}
+app.get('/:year',(req,res)=>{
+    var year = req.params.year;
+    if(year>=1980&&year<=1999){
+        console.log("year in data")
+        let tempjson = await getdataofyear(year)
         res.send(tempjson)
     }else{res.send("year not in data")}
 })
