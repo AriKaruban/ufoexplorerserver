@@ -26,12 +26,12 @@ app.get('/:year',(req,res)=>{
     var year = req.params.year;
     var tempjson = []
     if(year>=1980&&year<=1999){
-        for(let x=0;x<parsedata.length;x++){
-            if(parsedata[x].occuredDate.substr(parsedata[x].occuredDate.length - 4)==year){
-                tempjson.push(element)
-            }
-        }
-        res.send(tempjson)
+        // for(let x=0;x<parsedata.length;x++){
+        //     if(parsedata[x].occuredDate.substr(parsedata[x].occuredDate.length - 4)==year){
+        //         tempjson.push(element)
+        //     }
+        // }
+        res.send(`${year} is found in data`)
     }else{res.send("year not in data")}
 })
 const port=process.env.PORT||3000;
