@@ -40,7 +40,7 @@ async function getdataofyear2010(year,res){
     let p=new Promise((resolve,rejected)=>{
         var tempjson = []
         for(const entry of parsedata2){
-            if(entry.occuredDate.substr(entry.occuredDate.length - 4)==year){
+            if(entry.occuredDate!==undefined&&entry.occuredDate.substr(entry.occuredDate.length - 4)==year){
                 tempjson.push(entry)
             }
         }
