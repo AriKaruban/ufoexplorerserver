@@ -30,8 +30,8 @@ async function getdataofyear(year,res){
             if(entry.occuredDate.substr(entry.occuredDate.length - 4)==year){
                 tempjson.push(entry)
             }
-            resolve(tempjson)
         }
+        resolve(tempjson)
     })
     let data = await p
     res.send(data)
