@@ -10,13 +10,13 @@ let parsedata2 = JSON.parse(rawdata2[0]);
 app.use(express.static("public"));
 
 app.get('/',(req,res)=>{
-    res.send(url.parse(req.url,true).query)
+    res.send(parsedata)
 })
 app.get('/1980_1999',(req,res)=>{
-    res.send(JSON.parse(parsedata[0]))
+    res.send(parsedata[1])
 })
 app.get('/2010_2021',(req,res)=>{
-    res.send(JSON.parse(parsedata2[0]))
+    res.send(parsedata2)
 })
 const port=process.env.PORT||3000;
 console.log(port);
