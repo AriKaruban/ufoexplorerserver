@@ -26,8 +26,11 @@ app.get('/:year',(req,res)=>{
     var year = req.params.year;
     var tempjson = []
     if(year>=1980&&year<=1999){
+        console.log("year in data")
         for(const entry of parsedata){
+            console.log("forloop")
             if(entry.occuredDate.substr(entry.occuredDate.length - 4)==year){
+                console.log(entry)
                 tempjson.push(element)
             }
         }
