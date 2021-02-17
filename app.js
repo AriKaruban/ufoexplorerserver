@@ -21,8 +21,17 @@ app.get('/1980_1999/:id/:field',(req,res)=>{
     var field = req.params.field;
     res.send(parsedata[id][field])
 })
-app.get('/2010_2021',(req,res)=>{
-    res.send(parsedata2)
+app.get('/:year',(req,res)=>{
+    var year = req.params.year;
+    let tempjson = []
+    if(year>1980&&year<1999){
+        parsedata.forEach(element => {
+            if(element.occuredDate.substr(element.occuredDate.length - 5)==year){
+                tempjson.push(element)
+            }
+        });
+    }
+    res.send(tempjson)
 })
 const port=process.env.PORT||3000;
 console.log(port);
