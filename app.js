@@ -32,7 +32,7 @@ async function getdataofyear(year,res){
                 tempjson.push(entry)
             }
         }
-            resolve(tempjson)
+        resolve(tempjson)
     })
     let data = await p
     await res.send(data)
