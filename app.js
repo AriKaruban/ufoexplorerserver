@@ -16,6 +16,11 @@ app.get('/1980_1999/:id',(req,res)=>{
     var id = req.params.id;
     res.send(parsedata[id])
 })
+app.get('/1980_1999/:id/:field',(req,res)=>{
+    var id = req.params.id;
+    var field = req.params.field;
+    res.send(parsedata[id][field])
+})
 app.get('/2010_2021',(req,res)=>{
     res.send(parsedata2)
 })
