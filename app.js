@@ -23,7 +23,7 @@ app.get('/1980_1999/:id/:field',(req,res)=>{
     var field = req.params.field;
     res.send(parsedata[id][field])
 })
-async function getdataofyear(year){
+async function getdataofyear(year,res){
     let p=new Promise((resolve,rejected)=>{
         var tempjson = []
         for(const entry of parsedata){
@@ -41,7 +41,7 @@ app.get('/:year',(req,res)=>{
     var year = req.params.year;
     if(year>=1980&&year<=1999){
         console.log("year in data")
-        getdataofyear(year)
+        getdataofyear(year,res)
     }else{res.send("year not in data")}
 })
 const port=process.env.PORT||3000;
