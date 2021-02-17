@@ -35,14 +35,13 @@ async function getdataofyear(year){
         }
     })
     let data = await p
-    return data
+    res.send(data)
 }
 app.get('/:year',(req,res)=>{
     var year = req.params.year;
     if(year>=1980&&year<=1999){
         console.log("year in data")
-        let tempjson = await getdataofyear(year)
-        res.send(tempjson)
+        getdataofyear(year)
     }else{res.send("year not in data")}
 })
 const port=process.env.PORT||3000;
