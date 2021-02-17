@@ -13,6 +13,7 @@ app.get('/',(req,res)=>{
     res.send(parsedata)
 })
 app.get('/1980_1999/:id',(req,res)=>{
+    var id = req.params.id;
     res.send(parsedata[id])
 })
 app.get('/2010_2021',(req,res)=>{
