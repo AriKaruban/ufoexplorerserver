@@ -27,7 +27,19 @@ async function getdataofyear(year,res){
     let p=new Promise((resolve,rejected)=>{
         var tempjson = []
         for(const entry of parsedata){
-            console.log(entry,entry.occuredDate)
+            if(entry.occuredDate.substr(entry.occuredDate.length - 4)==year){
+                tempjson.push(entry)
+            }
+        }
+        resolve(tempjson)
+    })
+    let data = await p
+    await res.send(data)
+}
+async function getdataofyear2010(year,res){
+    let p=new Promise((resolve,rejected)=>{
+        var tempjson = []
+        for(const entry of parsedata2){
             if(entry.occuredDate.substr(entry.occuredDate.length - 4)==year){
                 tempjson.push(entry)
             }
@@ -40,8 +52,9 @@ async function getdataofyear(year,res){
 app.get('/:year',(req,res)=>{
     var year = req.params.year;
     if(year>=1980&&year<=1999){
-        console.log("year in data")
         getdataofyear(year,res)
+    }else if(year>=2010&&year<=2021){
+        getdataofyear2010(year,res)
     }else{res.send("year not in data")}
 })
 const port=process.env.PORT||3000;
